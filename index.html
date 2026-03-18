@@ -617,8 +617,21 @@
       transition: box-shadow 0.2s;
     }
 
+    .blog-card {
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(26, 79, 110, 0.08);
+      height: 100%;
+    }
+
     .blog-card:hover {
-      box-shadow: 0 8px 24px rgba(26, 79, 110, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(26, 79, 110, 0.12);
     }
 
     .blog-card-featured {
@@ -738,20 +751,21 @@
     .about-img-box {
       width: 100%;
       aspect-ratio: 4/5;
-      background: linear-gradient(160deg, var(--ocean), var(--teal));
+      background: linear-gradient(135deg, #e8edf2 0%, #bccad6 100%);
       border-radius: 16px;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       overflow: hidden;
+      box-shadow: 0 15px 35px rgba(26, 79, 110, 0.08);
     }
 
-    .about-initials {
-      font-family: var(--serif);
-      font-size: 8rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.2);
-      line-height: 1;
+    .about-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom;
+      display: block;
     }
 
     .about-badge {
@@ -799,6 +813,121 @@
     }
 
     .about-text .btn-ocean:hover {
+      background: var(--teal);
+    }
+
+    /* ── CONTACT MODAL ─────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 43, 51, 0.9);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2100;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: var(--white);
+      max-width: 480px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 3.5rem 2rem 2.5rem;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--light);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e2eef1;
+      color: var(--dark);
+    }
+
+    .modal-name {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--ocean);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-badge {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .modal-info {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .modal-contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(26, 79, 110, 0.08);
+    }
+
+    .modal-link {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: opacity 0.2s;
+    }
+
+    .modal-link:hover {
+      opacity: 0.8;
+    }
+
+    .btn-vcard {
+      display: block;
+      background: var(--ocean);
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .btn-vcard:hover {
       background: var(--teal);
     }
 
@@ -1107,8 +1236,8 @@
         <a href="articles/index.html" class="view-all">All articles →</a>
       </div>
       <div class="blog-grid">
-        <div class="blog-card blog-card-featured">
-          <div class="blog-card-img">
+        <a href="articles/investor-tax.html" class="blog-card blog-card-featured">
+          <div class="blog-card-img" style="background-image: url('images/investor-tax.png'); background-size: cover; background-position: center;">
             <span class="img-tag">Featured</span>
           </div>
           <div class="blog-card-body">
@@ -1119,30 +1248,30 @@
               If your Oʻahu home is worth over $1M and you haven't filed your homeowner exemption, you could be paying
               $7,000+ more than your neighbors every year. Here's exactly what to do.
             </div>
-            <a href="articles/investor-tax.html" class="read-more">Read article →</a>
+            <div class="read-more">Read article →</div>
           </div>
-        </div>
+        </a>
         <div class="sidebar-cards">
-          <div class="blog-card">
-            <div class="blog-card-img-sm" style="background:linear-gradient(135deg,var(--teal),#1a5e56)">
+          <a href="articles/skyline-rail.html" class="blog-card">
+            <div class="blog-card-img-sm" style="background-image: url('images/skyline-rail.png'); background-size: cover; background-position: center;">
               <span class="img-tag">Rail + TOD</span>
             </div>
             <div class="blog-card-body-sm">
               <div class="blog-meta">Feb 28, 2026 · 4 min</div>
               <div class="blog-card-title-sm">The Skyline Rail Is Live — Here's Where to Buy Now</div>
-              <a href="articles/skyline-rail.html" class="read-more" style="font-size:0.78rem">Read →</a>
+              <div class="read-more" style="font-size:0.78rem">Read →</div>
             </div>
-          </div>
-          <div class="blog-card">
-            <div class="blog-card-img-sm" style="background:linear-gradient(135deg,#5c3d8f,#2a1f5e)">
+          </a>
+          <a href="articles/cpr-lots.html" class="blog-card">
+            <div class="blog-card-img-sm" style="background-image: url('images/cpr-lots.png'); background-size: cover; background-position: center;">
               <span class="img-tag">Buyer Strategy</span>
             </div>
             <div class="blog-card-body-sm">
               <div class="blog-meta">Feb 10, 2026 · 5 min</div>
               <div class="blog-card-title-sm">What Is a CPR Lot? The #1 Way Families Are Staying in Kaimukī</div>
-              <a href="articles/cpr-lots.html" class="read-more" style="font-size:0.78rem">Read →</a>
+              <div class="read-more" style="font-size:0.78rem">Read →</div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -1153,11 +1282,11 @@
     <div class="about-inner">
       <div class="about-img-wrap">
         <div class="about-img-box">
-          <div class="about-initials">ET</div>
+          <img src="images/Professional_Headshot_2-removebg-preview.png" alt="Evan Tom">
         </div>
         <div class="about-badge">
           <strong>Evan Tom</strong>
-          Coldwell Banker Realty · License #RS-75829
+          Coldwell Banker Realty<br>License #RS-75829
         </div>
       </div>
       <div class="about-text">
@@ -1176,7 +1305,7 @@
           When I'm not talking real estate, you'll find me at the beach or cheering on the Rainbow Warriors. Let's talk
           story.
         </p>
-        <a href="/cdn-cgi/l/email-protection#d0b5a6b1be90b5a6b1bea4bfbdfeb3bfbd" class="btn-ocean">Get in Touch</a>
+        <button onclick="openModal()" class="btn-ocean">Get in Touch</button>
       </div>
     </div>
   </section>
@@ -1196,10 +1325,49 @@
     </div>
   </footer>
 
+  <!-- CONTACT MODAL -->
+  <div id="contactModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-name">Evan K.C. Tom</div>
+      <span class="modal-badge">REALTOR-ASSOCIATE® | RS-75829</span>
+
+      <div class="modal-info">
+        <strong>Coldwell Banker Realty | RBO-16781</strong><br>
+        94-799 Lumiaina Street, Suite A1<br>
+        Waipahu, HI 96797 | CBPP15
+      </div>
+
+      <div class="modal-contact-links">
+        <a href="tel:8087228665" class="modal-link">808.722.8665</a>
+        <a href="mailto:evan.tom@cbrealty.com" class="modal-link">evan.tom@cbrealty.com</a>
+      </div>
+
+      <a href="evan-tom.vcf" class="btn-vcard" download>Save to Contacts (vCard)</a>
+    </div>
+  </div>
+
   <script async data-uid="51073ae03d" src="https://evan-tom-real-estate-hawaii.kit.com/51073ae03d/index.js"></script>
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
 
+
+
+    // Modal Functions
+    function openModal() {
+      document.getElementById('contactModal').classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent scroll
+    }
+
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('active');
+      document.body.style.overflow = ''; 
+    }
+
+    // Close on outside click
+    document.getElementById('contactModal').addEventListener('click', (e) => {
+      if (e.target.id === 'contactModal') closeModal();
+    });
 
     // Smooth reveal on scroll
     const observer = new IntersectionObserver((entries) => {
