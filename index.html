@@ -366,6 +366,8 @@
     transition: background 0.2s, transform 0.1s;
   }
   .email-form button:hover { background: #d4a440; transform: translateY(-1px); }
+  .kit-embed { margin: 0 auto; max-width: 480px; }
+  .kit-embed .formkit-form { background: transparent !important; }
   .email-fine {
     font-size: 0.75rem; color: rgba(255,255,255,0.4);
     margin-top: 1rem;
@@ -696,12 +698,8 @@
       <div class="perk"><div class="perk-dot"></div>Monthly market report</div>
       <div class="perk"><div class="perk-dot"></div>Tax exemption reminders</div>
     </div>
-    <div class="email-form">
-      <input type="email" id="email-input" placeholder="Your email address" />
-      <button onclick="handleSubscribe()">Get Access</button>
-    </div>
-    <div class="success-msg" id="success-msg">
-      ✓ &nbsp; You're in! Check your inbox for your copy of the 2026 Buyer's Playbook.
+    <div class="kit-embed">
+      <script async data-uid="51073ae03d" src="https://evan-tom-real-estate-hawaii.kit.com/51073ae03d/index.js"></script>
     </div>
     <div class="email-fine">No spam. Unsubscribe anytime. Your information stays private.</div>
   </div>
@@ -781,7 +779,7 @@
       <p>
         When I'm not talking real estate, you'll find me at the beach or cheering on the Rainbow Warriors. Let's talk story.
       </p>
-      <a href="mailto:evan@evantom.com" class="btn-ocean">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#d0b5a6b1be90b5a6b1bea4bfbdfeb3bfbd" class="btn-ocean">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -800,17 +798,8 @@
   </div>
 </footer>
 
-<script>
-function handleSubscribe() {
-  const email = document.getElementById('email-input').value;
-  if (!email || !email.includes('@')) {
-    document.getElementById('email-input').style.borderColor = 'rgba(255,80,80,0.6)';
-    return;
-  }
-  document.querySelector('.email-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-  // TODO: Connect to Kit (ConvertKit) or Mailchimp API endpoint here
-}
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 
 // Smooth reveal on scroll
 const observer = new IntersectionObserver((entries) => {
