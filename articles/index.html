@@ -122,11 +122,12 @@
       gap: 2.5rem;
       margin-bottom: 4rem;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      color: inherit;
     }
 
     .article-item:hover {
-      opacity: 0.85;
+      transform: translateX(10px);
     }
 
     .article-thumb {
@@ -136,18 +137,8 @@
       background: var(--light);
       position: relative;
       overflow: hidden;
-    }
-
-    .thumb-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 2.5rem;
-      color: rgba(255, 255, 255, 0.3);
-      font-weight: 600;
+      background-size: cover;
+      background-position: center;
     }
 
     .article-content {
@@ -277,9 +268,7 @@
     <div class="archive-inner">
 
       <a href="investor-tax.html" class="article-item">
-        <div class="article-thumb" style="background: linear-gradient(135deg, var(--ocean), var(--teal));">
-          <div class="thumb-overlay">TAX</div>
-        </div>
+        <div class="article-thumb" style="background-image: url('../images/investor-tax.png');"></div>
         <div class="article-content">
           <div class="article-date">March 12, 2026 · 6 min read</div>
           <div class="article-title">Don't Get Hit with the "Investor Tax" — What Every Oʻahu Homeowner Must File Before
@@ -290,9 +279,7 @@
       </a>
 
       <a href="skyline-rail.html" class="article-item">
-        <div class="article-thumb" style="background: linear-gradient(135deg, var(--teal), #1a5e56);">
-          <div class="thumb-overlay">TOD</div>
-        </div>
+        <div class="article-thumb" style="background-image: url('../images/skyline-rail.png');"></div>
         <div class="article-content">
           <div class="article-date">Feb 28, 2026 · 4 min read</div>
           <div class="article-title">The Skyline Rail Is Live — Here's Where to Buy Now</div>
@@ -302,9 +289,7 @@
       </a>
 
       <a href="cpr-lots.html" class="article-item">
-        <div class="article-thumb" style="background: linear-gradient(135deg, #5c3d8f, #2a1f5e);">
-          <div class="thumb-overlay">CPR</div>
-        </div>
+        <div class="article-thumb" style="background-image: url('../images/cpr-lots.png');"></div>
         <div class="article-content">
           <div class="article-date">Feb 10, 2026 · 5 min read</div>
           <div class="article-title">What Is a CPR Lot? The #1 Way Families Are Staying in Kaimukī</div>
