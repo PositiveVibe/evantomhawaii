@@ -1,822 +1,1248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evan Tom | Oʻahu Real Estate</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan Tom | Oʻahu Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --ocean:   #1A4F6E;
-    --teal:    #2A8C82;
-    --teal-lt: #e6f5f3;
-    --gold:    #C9973A;
-    --gold-lt: #fdf3e3;
-    --sand:    #F7F3EE;
-    --dark:    #1C2B33;
-    --mid:     #4A6070;
-    --light:   #EDF4F7;
-    --white:   #ffffff;
-    --serif:   'Cormorant Garamond', Georgia, serif;
-    --sans:    'DM Sans', system-ui, sans-serif;
-    --radius:  12px;
-  }
+    :root {
+      --ocean: #1A4F6E;
+      --teal: #2A8C82;
+      --teal-lt: #e6f5f3;
+      --gold: #C9973A;
+      --gold-lt: #fdf3e3;
+      --sand: #F7F3EE;
+      --dark: #1C2B33;
+      --mid: #4A6070;
+      --light: #EDF4F7;
+      --white: #ffffff;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    font-family: var(--sans);
-    color: var(--dark);
-    background: var(--white);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+    body {
+      font-family: var(--sans);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  /* ── NAV ─────────────────────────────────────────────── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.94);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(26,79,110,0.1);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--ocean);
-    letter-spacing: 0.01em;
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--mid);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--ocean); }
-  .nav-cta {
-    background: var(--ocean);
-    color: var(--white) !important;
-    padding: 0.45rem 1.1rem;
-    border-radius: 6px;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--teal) !important; color: var(--white) !important; }
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(26, 79, 110, 0.1);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
 
-  /* ── HERO ─────────────────────────────────────────────── */
-  .hero {
-    position: relative;
-    min-height: 88vh;
-    display: flex; align-items: center;
-    background: linear-gradient(135deg, var(--ocean) 0%, #0d3347 55%, #1a5e6e 100%);
-    overflow: hidden;
-    padding: 5rem 2rem 4rem;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  /* Wave shape at bottom */
-  .hero::after {
-    content: '';
-    position: absolute; bottom: -1px; left: 0; right: 0; height: 80px;
-    background: var(--white);
-    clip-path: ellipse(55% 100% at 50% 100%);
-  }
-  .hero-inner {
-    position: relative; z-index: 1;
-    max-width: 1100px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.75rem; font-weight: 500;
-    color: var(--gold);
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 1.2rem;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block; width: 28px; height: 2px;
-    background: var(--gold);
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.6rem, 5vw, 4rem);
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 1.2rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: rgba(255,255,255,0.7);
-  }
-  .hero-sub {
-    font-size: 1rem; font-weight: 300;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    max-width: 440px;
-  }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--dark);
-    padding: 0.8rem 1.8rem;
-    border-radius: 6px;
-    font-weight: 500; font-size: 0.9rem;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.1s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: #d4a440; transform: translateY(-1px); }
-  .btn-ghost {
-    border: 1.5px solid rgba(255,255,255,0.4);
-    color: var(--white);
-    padding: 0.8rem 1.8rem;
-    border-radius: 6px;
-    font-weight: 400; font-size: 0.9rem;
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    display: inline-block;
-  }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.08); }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ocean);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
 
-  /* Hero card */
-  .hero-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 16px;
-    padding: 2rem;
-    backdrop-filter: blur(6px);
-  }
-  .hero-stat {
-    padding: 1.2rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .hero-stat:last-child { border-bottom: none; }
-  .hero-stat-num {
-    font-family: var(--serif);
-    font-size: 2.4rem; font-weight: 600;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 0.2rem;
-  }
-  .hero-stat-label {
-    font-size: 0.8rem; font-weight: 400;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.04em;
-  }
-  .hero-stat-badge {
-    display: inline-block;
-    background: rgba(201,151,58,0.25);
-    color: #f0c46a;
-    font-size: 0.72rem; font-weight: 500;
-    padding: 2px 8px; border-radius: 20px;
-    margin-top: 4px;
-  }
+    .nav-logo span {
+      color: var(--gold);
+    }
 
-  /* ── TRUST BAR ─────────────────────────────────────────── */
-  .trust-bar {
-    background: var(--sand);
-    padding: 2rem;
-    border-bottom: 1px solid rgba(26,79,110,0.08);
-  }
-  .trust-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: center;
-    gap: 3rem; flex-wrap: wrap;
-  }
-  .trust-item {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.85rem; color: var(--mid);
-  }
-  .trust-icon {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: var(--ocean);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .trust-icon svg { width: 16px; height: 16px; fill: white; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-  /* ── SECTION COMMON ──────────────────────────────────────── */
-  section { padding: 5rem 2rem; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.72rem; font-weight: 500;
-    color: var(--teal);
-    letter-spacing: 0.14em; text-transform: uppercase;
-    margin-bottom: 0.6rem;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 600; line-height: 1.15;
-    color: var(--ocean);
-    margin-bottom: 1rem;
-  }
-  .section-sub {
-    font-size: 1rem; font-weight: 300;
-    color: var(--mid); line-height: 1.7;
-    max-width: 520px;
-  }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-  /* ── VIDEOS ─────────────────────────────────────────────── */
-  .videos-section { background: var(--white); }
-  .videos-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
-  }
-  .view-all {
-    font-size: 0.85rem; font-weight: 500;
-    color: var(--teal); text-decoration: none;
-    border-bottom: 1px solid var(--teal);
-    padding-bottom: 1px; transition: opacity 0.2s;
-  }
-  .view-all:hover { opacity: 0.7; }
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-  .video-card {
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid rgba(26,79,110,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    background: var(--white);
-  }
-  .video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,79,110,0.12); }
-  .video-thumb {
-    position: relative; padding-top: 56.25%; background: var(--light); overflow: hidden;
-  }
-  .video-thumb iframe {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    border: none;
-  }
-  .video-thumb-placeholder {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--ocean), var(--teal));
-    display: flex; align-items: center; justify-content: center; flex-direction: column;
-    gap: 8px;
-  }
-  .play-btn {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.5);
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .play-btn svg { width: 20px; height: 20px; fill: white; margin-left: 3px; }
-  .video-label {
-    font-size: 0.7rem; font-weight: 500;
-    color: rgba(255,255,255,0.7); letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .video-info { padding: 1.1rem 1.2rem; }
-  .video-tag {
-    display: inline-block;
-    background: var(--teal-lt); color: var(--teal);
-    font-size: 0.7rem; font-weight: 500;
-    padding: 3px 10px; border-radius: 20px;
-    letter-spacing: 0.04em; margin-bottom: 0.5rem;
-  }
-  .video-title {
-    font-weight: 500; font-size: 0.95rem;
-    color: var(--dark); line-height: 1.4;
-  }
-  .video-date { font-size: 0.78rem; color: var(--mid); margin-top: 0.4rem; }
+    .nav-links a:hover {
+      color: var(--ocean);
+    }
 
-  /* ── EMAIL CAPTURE ───────────────────────────────────────── */
-  .email-section {
-    background: linear-gradient(135deg, var(--ocean) 0%, #0d3347 100%);
-    position: relative; overflow: hidden;
-  }
-  .email-section::before {
-    content: '';
-    position: absolute; top: -50%; right: -20%;
-    width: 600px; height: 600px; border-radius: 50%;
-    background: rgba(42,140,130,0.15);
-  }
-  .email-inner {
-    max-width: 680px; margin: 0 auto; text-align: center;
-    position: relative; z-index: 1;
-  }
-  .email-eyebrow {
-    font-size: 0.72rem; font-weight: 500;
-    color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-  .email-inner h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 600; color: var(--white);
-    line-height: 1.15; margin-bottom: 1rem;
-  }
-  .email-inner p {
-    font-size: 1rem; font-weight: 300;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.7; margin-bottom: 2rem;
-  }
-  .email-perks {
-    display: flex; justify-content: center; gap: 1.5rem;
-    flex-wrap: wrap; margin-bottom: 2rem;
-  }
-  .perk {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 0.82rem; color: rgba(255,255,255,0.75);
-  }
-  .perk-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gold); flex-shrink: 0;
-  }
-  .email-form {
-    display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto;
-  }
-  .email-form input {
-    flex: 1; padding: 0.85rem 1.2rem;
-    border: 1.5px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.1);
-    color: var(--white); font-family: var(--sans); font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s;
-  }
-  .email-form input::placeholder { color: rgba(255,255,255,0.45); }
-  .email-form input:focus { border-color: rgba(255,255,255,0.5); }
-  .email-form button {
-    background: var(--gold); color: var(--dark);
-    border: none; border-radius: 8px;
-    padding: 0.85rem 1.5rem;
-    font-family: var(--sans); font-weight: 500; font-size: 0.9rem;
-    cursor: pointer; white-space: nowrap;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .email-form button:hover { background: #d4a440; transform: translateY(-1px); }
-  .kit-embed { margin: 0 auto; max-width: 480px; }
-  .kit-embed .formkit-form { background: transparent !important; }
-  .email-fine {
-    font-size: 0.75rem; color: rgba(255,255,255,0.4);
-    margin-top: 1rem;
-  }
-  .success-msg {
-    display: none;
-    background: rgba(42,140,130,0.25);
-    border: 1px solid rgba(42,140,130,0.5);
-    border-radius: 10px; padding: 1.2rem 1.5rem;
-    color: #6ee7d4; font-size: 0.95rem;
-    margin-top: 0.5rem;
-  }
+    .nav-cta {
+      background: var(--ocean);
+      color: var(--white) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
 
-  /* ── BLOG ─────────────────────────────────────────────── */
-  .blog-section { background: var(--sand); }
-  .blog-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
-  }
-  .blog-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1.5rem;
-  }
-  .blog-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    border: 1px solid rgba(26,79,110,0.08);
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-  .blog-card:hover { box-shadow: 0 8px 24px rgba(26,79,110,0.1); }
-  .blog-card-featured { display: flex; flex-direction: column; }
-  .blog-card-img {
-    height: 220px;
-    background: linear-gradient(135deg, var(--teal), var(--ocean));
-    position: relative; overflow: hidden;
-    display: flex; align-items: flex-end; padding: 1.2rem;
-  }
-  .blog-card-img-sm {
-    height: 130px;
-    background: linear-gradient(135deg, #C9973A, #a07020);
-    position: relative; overflow: hidden;
-    display: flex; align-items: flex-end; padding: 1rem;
-  }
-  .img-tag {
-    background: rgba(0,0,0,0.35);
-    color: white; font-size: 0.7rem; font-weight: 500;
-    padding: 3px 10px; border-radius: 20px;
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .blog-card-body { padding: 1.4rem 1.5rem; }
-  .blog-card-body-sm { padding: 1rem 1.2rem; }
-  .blog-meta { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.5rem; }
-  .blog-card-title {
-    font-family: var(--serif);
-    font-size: 1.25rem; font-weight: 600;
-    color: var(--dark); line-height: 1.3;
-    margin-bottom: 0.6rem;
-  }
-  .blog-card-title-sm {
-    font-family: var(--serif);
-    font-size: 1rem; font-weight: 600;
-    color: var(--dark); line-height: 1.3;
-    margin-bottom: 0.4rem;
-  }
-  .blog-excerpt {
-    font-size: 0.88rem; color: var(--mid);
-    line-height: 1.6; margin-bottom: 1rem;
-  }
-  .read-more {
-    font-size: 0.82rem; font-weight: 500;
-    color: var(--teal); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 4px;
-    transition: gap 0.2s;
-  }
-  .read-more:hover { gap: 8px; }
-  .sidebar-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+    .nav-cta:hover {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+    }
 
-  /* ── ABOUT STRIP ─────────────────────────────────────────── */
-  .about-section { background: var(--white); }
-  .about-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-  }
-  .about-img-wrap {
-    position: relative;
-  }
-  .about-img-box {
-    width: 100%; aspect-ratio: 4/5;
-    background: linear-gradient(160deg, var(--ocean), var(--teal));
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .about-initials {
-    font-family: var(--serif);
-    font-size: 8rem; font-weight: 600;
-    color: rgba(255,255,255,0.2);
-    line-height: 1;
-  }
-  .about-badge {
-    position: absolute; bottom: -1rem; right: -1rem;
-    background: var(--gold);
-    color: var(--dark);
-    font-size: 0.8rem; font-weight: 500;
-    padding: 0.8rem 1.2rem;
-    border-radius: 10px;
-    line-height: 1.4;
-    box-shadow: 0 4px 16px rgba(201,151,58,0.3);
-  }
-  .about-badge strong { display: block; font-size: 1.1rem; }
-  .about-text .section-title { margin-bottom: 1rem; }
-  .about-text p {
-    font-size: 0.95rem; font-weight: 300;
-    color: var(--mid); line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-  .about-text .btn-ocean {
-    display: inline-block;
-    background: var(--ocean); color: white;
-    padding: 0.75rem 1.6rem; border-radius: 6px;
-    text-decoration: none; font-size: 0.88rem; font-weight: 500;
-    transition: background 0.2s;
-    margin-top: 0.5rem;
-  }
-  .about-text .btn-ocean:hover { background: var(--teal); }
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--ocean) 0%, #0d3347 55%, #1a5e6e 100%);
+      overflow: hidden;
+      padding: 5rem 2rem 4rem;
+    }
 
-  /* ── FOOTER ─────────────────────────────────────────────── */
-  footer {
-    background: var(--dark);
-    color: rgba(255,255,255,0.6);
-    padding: 2.5rem 2rem;
-    font-size: 0.82rem;
-  }
-  .footer-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-logo {
-    font-family: var(--serif);
-    font-size: 1.1rem; font-weight: 600;
-    color: white; text-decoration: none;
-  }
-  .footer-logo span { color: var(--gold); }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: white; }
-  .footer-license { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
 
-  /* ── ANIMATIONS ──────────────────────────────────────────── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero-text > * { opacity: 0; animation: fadeUp 0.7s ease forwards; }
-  .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-text > *:nth-child(2) { animation-delay: 0.25s; }
-  .hero-text > *:nth-child(3) { animation-delay: 0.4s; }
-  .hero-text > *:nth-child(4) { animation-delay: 0.55s; }
-  .hero-card { opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards; }
+    /* Wave shape at bottom */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
 
-  @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-card { display: none; }
-    .blog-grid { grid-template-columns: 1fr; }
-    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-img-wrap { max-width: 320px; }
-    nav { padding: 0 1rem; }
-    .nav-links { display: none; }
-  }
-</style>
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 440px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #d4a440;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      color: var(--white);
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Hero card */
+    .hero-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-stat {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-stat:last-child {
+      border-bottom: none;
+    }
+
+    .hero-stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-stat-badge {
+      display: inline-block;
+      background: rgba(201, 151, 58, 0.25);
+      color: #f0c46a;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+
+    /* ── TRUST BAR ─────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--sand);
+      padding: 2rem;
+      border-bottom: 1px solid rgba(26, 79, 110, 0.08);
+    }
+
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+
+    .trust-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--ocean);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trust-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: white;
+    }
+
+    /* ── SECTION COMMON ──────────────────────────────────────── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ocean);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── VIDEOS ─────────────────────────────────────────────── */
+    .videos-section {
+      background: var(--white);
+    }
+
+    .videos-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .view-all {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .view-all:hover {
+      opacity: 0.7;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(26, 79, 110, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26, 79, 110, 0.12);
+    }
+
+    .video-thumb {
+      position: relative;
+      padding-top: 56.25%;
+      background: var(--light);
+      overflow: hidden;
+    }
+
+    .video-thumb iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-thumb-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--ocean), var(--teal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .play-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .play-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+      margin-left: 3px;
+    }
+
+    .video-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .video-info {
+      padding: 1.1rem 1.2rem;
+    }
+
+    .video-tag {
+      display: inline-block;
+      background: var(--teal-lt);
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+
+    .video-date {
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.4rem;
+    }
+
+    /* ── EMAIL SECTION STYLING ───────────────────────────────── */
+    .email-section {
+      background: linear-gradient(135deg, var(--ocean) 0%, #0d3347 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .email-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(42, 140, 130, 0.15);
+    }
+
+    .email-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .email-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .email-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .email-inner p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .email-perks {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .perk-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .kit-embed {
+      margin: 2rem auto 0;
+      max-width: 480px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .kit-embed .formkit-form {
+      background: transparent !important;
+    }
+
+    .email-fine {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 1rem;
+    }
+
+    .success-msg {
+      display: none;
+      background: rgba(42, 140, 130, 0.25);
+      border: 1px solid rgba(42, 140, 130, 0.5);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      color: #6ee7d4;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ── BLOG ─────────────────────────────────────────────── */
+    .blog-section {
+      background: var(--sand);
+    }
+
+    .blog-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid rgba(26, 79, 110, 0.08);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .blog-card:hover {
+      box-shadow: 0 8px 24px rgba(26, 79, 110, 0.1);
+    }
+
+    .blog-card-featured {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card-img {
+      height: 220px;
+      background: linear-gradient(135deg, var(--teal), var(--ocean));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+
+    .blog-card-img-sm {
+      height: 130px;
+      background: linear-gradient(135deg, #C9973A, #a07020);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+
+    .img-tag {
+      background: rgba(0, 0, 0, 0.35);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .blog-card-body {
+      padding: 1.4rem 1.5rem;
+    }
+
+    .blog-card-body-sm {
+      padding: 1rem 1.2rem;
+    }
+
+    .blog-meta {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-card-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .blog-card-title-sm {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .blog-excerpt {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+
+    .read-more:hover {
+      gap: 8px;
+    }
+
+    .sidebar-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* ── ABOUT STRIP ─────────────────────────────────────────── */
+    .about-section {
+      background: var(--white);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-box {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--ocean), var(--teal));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about-initials {
+      font-family: var(--serif);
+      font-size: 8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.2);
+      line-height: 1;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      line-height: 1.4;
+      box-shadow: 0 4px 16px rgba(201, 151, 58, 0.3);
+    }
+
+    .about-badge strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .about-text .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-text .btn-ocean {
+      display: inline-block;
+      background: var(--ocean);
+      color: white;
+      padding: 0.75rem 1.6rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .about-text .btn-ocean:hover {
+      background: var(--teal);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 2.5rem 2rem;
+      font-size: 0.82rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-license {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.75rem;
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-text>* {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .hero-text>*:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .hero-text>*:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    .hero-text>*:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .hero-text>*:nth-child(4) {
+      animation-delay: 0.55s;
+    }
+
+    .hero-card {
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-card {
+        display: none;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-img-wrap {
+        max-width: 320px;
+      }
+
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Evan <span>Tom</span></a>
-  <ul class="nav-links">
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#blog">Market Updates</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#subscribe" class="nav-cta">Get the Guide</a></li>
-  </ul>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Evan <span>Tom</span></a>
+    <ul class="nav-links">
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#blog">Market Updates</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#subscribe" class="nav-cta" data-formkit-toggle="51073ae03d">Get the Guide</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-eyebrow">Oʻahu Real Estate · 2026</div>
-      <h1>Helping Local Families <em>Stay</em> on the Island They Love</h1>
-      <p class="hero-sub">
-        Real talk about Oʻahu real estate — market updates, buying strategies, and insider programs that keep Kamaʻāina in their communities.
-      </p>
-      <div class="hero-btns">
-        <a href="#subscribe" class="btn-primary">Get the Free Buyer's Guide</a>
-        <a href="#videos" class="btn-ghost">Watch Latest Videos</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Oʻahu Real Estate · 2026</div>
+        <h1>Helping Local Families <em>Stay</em> on the Island They Love</h1>
+        <p class="hero-sub">
+          Real talk about Oʻahu real estate — market updates, buying strategies, and insider programs that keep
+          Kamaʻāina in their communities.
+        </p>
+        <div class="hero-btns">
+          <a href="#subscribe" class="btn-primary" data-formkit-toggle="51073ae03d">Get the Free Buyer's Guide</a>
+          <a href="#videos" class="btn-ghost">Watch Latest Videos</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-stat">
+          <div class="hero-stat-num">5.40%</div>
+          <div class="hero-stat-label">Hale Kamaʻāina Rate (2026)</div>
+          <div class="hero-stat-badge">Below national average</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">$3,000</div>
+          <div class="hero-stat-label">Cash at Closing Bonus — first 35 buyers</div>
+          <div class="hero-stat-badge">Limited each cycle</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4%</div>
+          <div class="hero-stat-label">Down Payment Assistance available</div>
+          <div class="hero-stat-badge">At 1% simple interest</div>
+        </div>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="hero-stat">
-        <div class="hero-stat-num">5.40%</div>
-        <div class="hero-stat-label">Hale Kamaʻāina Rate (2026)</div>
-        <div class="hero-stat-badge">Below national average</div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight:500;font-size:0.85rem;color:var(--dark)">Coldwell Banker Realty</div>
+          <div style="font-size:0.75rem">License #RS-75829</div>
+        </div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">$3,000</div>
-        <div class="hero-stat-label">Cash at Closing Bonus — first 35 buyers</div>
-        <div class="hero-stat-badge">Limited each cycle</div>
+      <div class="trust-item">
+        <div class="trust-icon" style="background:var(--teal)">
+          <svg viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <span>Helping Oʻahu locals since 2018</span>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">4%</div>
-        <div class="hero-stat-label">Down Payment Assistance available</div>
-        <div class="hero-stat-badge">At 1% simple interest</div>
+      <div class="trust-item">
+        <div class="trust-icon" style="background:var(--gold)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+        </div>
+        <span>HHFDC Certified Lender Partner</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" style="background:#c0392b">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" />
+          </svg>
+        </div>
+        <span>YouTube · Local Market Videos</span>
       </div>
     </div>
   </div>
-</section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-inner">
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+  <!-- VIDEOS -->
+  <section class="videos-section" id="videos">
+    <div class="section-inner">
+      <div class="videos-header">
+        <div>
+          <div class="section-label">Latest from YouTube</div>
+          <h2 class="section-title">Real Talk. Real Numbers.</h2>
+        </div>
+        <a href="https://youtube.com/@evantom" target="_blank" class="view-all">View all videos →</a>
       </div>
-      <div>
-        <div style="font-weight:500;font-size:0.85rem;color:var(--dark)">Coldwell Banker Realty</div>
-        <div style="font-size:0.75rem">License #RS-75829</div>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon" style="background:var(--teal)">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <span>Helping Oʻahu locals since 2018</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon" style="background:var(--gold)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <span>HHFDC Certified Lender Partner</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon" style="background:#c0392b">
-        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
-      </div>
-      <span>YouTube · Local Market Videos</span>
-    </div>
-  </div>
-</div>
-
-<!-- VIDEOS -->
-<section class="videos-section" id="videos">
-  <div class="section-inner">
-    <div class="videos-header">
-      <div>
-        <div class="section-label">Latest from YouTube</div>
-        <h2 class="section-title">Real Talk. Real Numbers.</h2>
-      </div>
-      <a href="https://youtube.com/@evantom" target="_blank" class="view-all">View all videos →</a>
-    </div>
-    <div class="video-grid">
-      <!-- Replace src with actual YouTube embed URLs -->
-      <div class="video-card">
-        <div class="video-thumb">
-          <div class="video-thumb-placeholder">
-            <div class="play-btn">
-              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <div class="video-grid">
+        <!-- Replace src with actual YouTube embed URLs -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="video-thumb-placeholder">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+              <div class="video-label">Market Update</div>
             </div>
-            <div class="video-label">Market Update</div>
+          </div>
+          <div class="video-info">
+            <span class="video-tag">Market Update</span>
+            <div class="video-title">Oʻahu Home Prices in 2026 — What the Data Actually Shows</div>
+            <div class="video-date">March 2026</div>
           </div>
         </div>
-        <div class="video-info">
-          <span class="video-tag">Market Update</span>
-          <div class="video-title">Oʻahu Home Prices in 2026 — What the Data Actually Shows</div>
-          <div class="video-date">March 2026</div>
-        </div>
-      </div>
-      <div class="video-card">
-        <div class="video-thumb">
-          <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,var(--teal),#1a5e56)">
-            <div class="play-btn">
-              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,var(--teal),#1a5e56)">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+              <div class="video-label">Buyer's Guide</div>
             </div>
-            <div class="video-label">Buyer's Guide</div>
+          </div>
+          <div class="video-info">
+            <span class="video-tag" style="background:var(--gold-lt);color:var(--gold)">Buyer Tips</span>
+            <div class="video-title">The Hale Kamaʻāina Mortgage — Full Breakdown for 2026</div>
+            <div class="video-date">February 2026</div>
           </div>
         </div>
-        <div class="video-info">
-          <span class="video-tag" style="background:var(--gold-lt);color:var(--gold)">Buyer Tips</span>
-          <div class="video-title">The Hale Kamaʻāina Mortgage — Full Breakdown for 2026</div>
-          <div class="video-date">February 2026</div>
-        </div>
-      </div>
-      <div class="video-card">
-        <div class="video-thumb">
-          <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#2c5f2e,#4a9e4c)">
-            <div class="play-btn">
-              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#2c5f2e,#4a9e4c)">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+              <div class="video-label">Neighborhood Tour</div>
             </div>
-            <div class="video-label">Neighborhood Tour</div>
           </div>
-        </div>
-        <div class="video-info">
-          <span class="video-tag" style="background:#edf7ee;color:#2c5f2e">Neighborhoods</span>
-          <div class="video-title">Ewa Beach vs. Koa Ridge — Where Should Local Families Buy?</div>
-          <div class="video-date">January 2026</div>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:0.8rem;color:var(--mid);margin-top:1.5rem;text-align:center;">
-      💡 <em>To add your real videos: replace the placeholder divs with <code>&lt;iframe&gt;</code> YouTube embeds using your video IDs.</em>
-    </p>
-  </div>
-</section>
-
-<!-- EMAIL CAPTURE -->
-<section class="email-section" id="subscribe">
-  <div class="email-inner">
-    <div class="email-eyebrow">Free Local Buyer's Resource</div>
-    <h2>Get the 2026 Oʻahu Local Buyer's Playbook</h2>
-    <p>Monthly market updates, off-market listings, and local program alerts — straight to your inbox. No spam, no investor fluff. Just neighbor-to-neighbor intel.</p>
-    <div class="email-perks">
-      <div class="perk"><div class="perk-dot"></div>Off-market listings first</div>
-      <div class="perk"><div class="perk-dot"></div>HHFDC rate alerts</div>
-      <div class="perk"><div class="perk-dot"></div>Monthly market report</div>
-      <div class="perk"><div class="perk-dot"></div>Tax exemption reminders</div>
-    </div>
-    <div class="kit-embed">
-      <script async data-uid="51073ae03d" src="https://evan-tom-real-estate-hawaii.kit.com/51073ae03d/index.js"></script>
-    </div>
-    <div class="email-fine">No spam. Unsubscribe anytime. Your information stays private.</div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section class="blog-section" id="blog">
-  <div class="section-inner">
-    <div class="blog-header">
-      <div>
-        <div class="section-label">Market Intelligence</div>
-        <h2 class="section-title">Oʻahu Market Updates</h2>
-      </div>
-      <a href="#" class="view-all">All articles →</a>
-    </div>
-    <div class="blog-grid">
-      <div class="blog-card blog-card-featured">
-        <div class="blog-card-img">
-          <span class="img-tag">Featured</span>
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">March 12, 2026 · 6 min read</div>
-          <div class="blog-card-title">Don't Get Hit with the "Investor Tax" — What Every Oʻahu Homeowner Must File Before September 30</div>
-          <div class="blog-excerpt">
-            If your Oʻahu home is worth over $1M and you haven't filed your homeowner exemption, you could be paying $7,000+ more than your neighbors every year. Here's exactly what to do.
-          </div>
-          <a href="#" class="read-more">Read article →</a>
-        </div>
-      </div>
-      <div class="sidebar-cards">
-        <div class="blog-card">
-          <div class="blog-card-img-sm" style="background:linear-gradient(135deg,var(--teal),#1a5e56)">
-            <span class="img-tag">Rail + TOD</span>
-          </div>
-          <div class="blog-card-body-sm">
-            <div class="blog-meta">Feb 28, 2026 · 4 min</div>
-            <div class="blog-card-title-sm">The Skyline Rail Is Live — Here's Where to Buy Now</div>
-            <a href="#" class="read-more" style="font-size:0.78rem">Read →</a>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img-sm" style="background:linear-gradient(135deg,#5c3d8f,#2a1f5e)">
-            <span class="img-tag">Buyer Strategy</span>
-          </div>
-          <div class="blog-card-body-sm">
-            <div class="blog-meta">Feb 10, 2026 · 5 min</div>
-            <div class="blog-card-title-sm">What Is a CPR Lot? The #1 Way Families Are Staying in Kaimukī</div>
-            <a href="#" class="read-more" style="font-size:0.78rem">Read →</a>
+          <div class="video-info">
+            <span class="video-tag" style="background:#edf7ee;color:#2c5f2e">Neighborhoods</span>
+            <div class="video-title">Ewa Beach vs. Koa Ridge — Where Should Local Families Buy?</div>
+            <div class="video-date">January 2026</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about-section" id="about">
-  <div class="about-inner">
-    <div class="about-img-wrap">
-      <div class="about-img-box">
-        <div class="about-initials">ET</div>
-      </div>
-      <div class="about-badge">
-        <strong>Evan Tom</strong>
-        Coldwell Banker Realty · License #RS-75829
-      </div>
-    </div>
-    <div class="about-text">
-      <div class="section-label">About Evan</div>
-      <h2 class="section-title">A Neighbor Helping Neighbors Stay Home</h2>
-      <p>
-        I grew up on Oʻahu and I've watched too many local families get priced out of the island they love. That's what drives me — not sales volume, but keeping our community intact.
+      <p style="font-size:0.8rem;color:var(--mid);margin-top:1.5rem;text-align:center;">
+        💡 <em>To add your real videos: replace the placeholder divs with <code>&lt;iframe&gt;</code> YouTube embeds
+          using your video IDs.</em>
       </p>
-      <p>
-        Since 2018 I've helped hundreds of Kamaʻāina families navigate Oʻahu's market — from first-time buyers using HHFDC programs to homeowners protecting their equity with the right exemptions. I share everything I know, for free, on YouTube and in this newsletter.
-      </p>
-      <p>
-        When I'm not talking real estate, you'll find me at the beach or cheering on the Rainbow Warriors. Let's talk story.
-      </p>
-      <a href="/cdn-cgi/l/email-protection#d0b5a6b1be90b5a6b1bea4bfbdfeb3bfbd" class="btn-ocean">Get in Touch</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="#" class="footer-logo">Evan <span>Tom</span></a>
-    <div class="footer-links">
-      <a href="#videos">Videos</a>
-      <a href="#blog">Blog</a>
-      <a href="#subscribe">Newsletter</a>
-      <a href="#about">About</a>
+  <!-- EMAIL CAPTURE -->
+  <section class="email-section" id="subscribe">
+    <div class="email-inner">
+      <div class="email-eyebrow">Free Local Buyer's Resource</div>
+      <h2>Get the 2026 Oʻahu Local Buyer's Playbook</h2>
+      <p>Monthly market updates, off-market listings, and local program alerts — straight to your inbox. No spam, no
+        investor fluff. Just neighbor-to-neighbor intel.</p>
+      <div class="email-perks">
+        <div class="perk">
+          <div class="perk-dot"></div>Off-market listings first
+        </div>
+        <div class="perk">
+          <div class="perk-dot"></div>HHFDC rate alerts
+        </div>
+        <div class="perk">
+          <div class="perk-dot"></div>Monthly market report
+        </div>
+        <div class="perk">
+          <div class="perk-dot"></div>Tax exemption reminders
+        </div>
+      </div>
+      <div class="kit-embed">
+        <button class="btn-primary" data-formkit-toggle="51073ae03d"
+          style="padding: 1rem 2.5rem; font-size: 1.1rem; cursor: pointer;">Get the Buyer's Guide</button>
+      </div>
+      <div class="email-fine">No spam. Unsubscribe anytime. Your information stays private.</div>
     </div>
-    <div class="footer-license">© 2026 Evan Tom · Coldwell Banker Realty · License #RS-75829 · Hawaii DCCA Compliant</div>
-  </div>
-</footer>
+  </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <!-- BLOG -->
+  <section class="blog-section" id="blog">
+    <div class="section-inner">
+      <div class="blog-header">
+        <div>
+          <div class="section-label">Market Intelligence</div>
+          <h2 class="section-title">Oʻahu Market Updates</h2>
+        </div>
+        <a href="#" class="view-all">All articles →</a>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card blog-card-featured">
+          <div class="blog-card-img">
+            <span class="img-tag">Featured</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">March 12, 2026 · 6 min read</div>
+            <div class="blog-card-title">Don't Get Hit with the "Investor Tax" — What Every Oʻahu Homeowner Must File
+              Before September 30</div>
+            <div class="blog-excerpt">
+              If your Oʻahu home is worth over $1M and you haven't filed your homeowner exemption, you could be paying
+              $7,000+ more than your neighbors every year. Here's exactly what to do.
+            </div>
+            <a href="#" class="read-more">Read article →</a>
+          </div>
+        </div>
+        <div class="sidebar-cards">
+          <div class="blog-card">
+            <div class="blog-card-img-sm" style="background:linear-gradient(135deg,var(--teal),#1a5e56)">
+              <span class="img-tag">Rail + TOD</span>
+            </div>
+            <div class="blog-card-body-sm">
+              <div class="blog-meta">Feb 28, 2026 · 4 min</div>
+              <div class="blog-card-title-sm">The Skyline Rail Is Live — Here's Where to Buy Now</div>
+              <a href="#" class="read-more" style="font-size:0.78rem">Read →</a>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img-sm" style="background:linear-gradient(135deg,#5c3d8f,#2a1f5e)">
+              <span class="img-tag">Buyer Strategy</span>
+            </div>
+            <div class="blog-card-body-sm">
+              <div class="blog-meta">Feb 10, 2026 · 5 min</div>
+              <div class="blog-card-title-sm">What Is a CPR Lot? The #1 Way Families Are Staying in Kaimukī</div>
+              <a href="#" class="read-more" style="font-size:0.78rem">Read →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-img-wrap">
+        <div class="about-img-box">
+          <div class="about-initials">ET</div>
+        </div>
+        <div class="about-badge">
+          <strong>Evan Tom</strong>
+          Coldwell Banker Realty · License #RS-75829
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About Evan</div>
+        <h2 class="section-title">A Neighbor Helping Neighbors Stay Home</h2>
+        <p>
+          I grew up on Oʻahu and I've watched too many local families get priced out of the island they love. That's
+          what drives me — not sales volume, but keeping our community intact.
+        </p>
+        <p>
+          Since 2018 I've helped hundreds of Kamaʻāina families navigate Oʻahu's market — from first-time buyers using
+          HHFDC programs to homeowners protecting their equity with the right exemptions. I share everything I know, for
+          free, on YouTube and in this newsletter.
+        </p>
+        <p>
+          When I'm not talking real estate, you'll find me at the beach or cheering on the Rainbow Warriors. Let's talk
+          story.
+        </p>
+        <a href="/cdn-cgi/l/email-protection#d0b5a6b1be90b5a6b1bea4bfbdfeb3bfbd" class="btn-ocean">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">Evan <span>Tom</span></a>
+      <div class="footer-links">
+        <a href="#videos">Videos</a>
+        <a href="#blog">Blog</a>
+        <a href="#subscribe" data-formkit-toggle="51073ae03d">Newsletter</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="footer-license">© 2026 Evan Tom · Coldwell Banker Realty · License #RS-75829 · Hawaii DCCA Compliant
+      </div>
+    </div>
+  </footer>
+
+  <script async data-uid="51073ae03d" src="https://evan-tom-real-estate-hawaii.kit.com/51073ae03d/index.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
 
 
-// Smooth reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
 
-document.querySelectorAll('.video-card, .blog-card, .trust-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
-</script>
+    document.querySelectorAll('.video-card, .blog-card, .trust-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
+
 </html>
